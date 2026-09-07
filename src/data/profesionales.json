@@ -1,0 +1,182 @@
+[
+  {
+    "profesionalid": 1,
+    "nombre": "Dra. Sofía Martínez",
+    "especialidad": "Cardiología",
+    "activo": true
+  },
+  {
+    "profesionalid": 2,
+    "nombre": "Dr. Alejandro Gómez",
+    "especialidad": "Pediatría",
+    "activo": true
+  },
+  {
+    "profesionalid": 3,
+    "nombre": "Dra. Lucía Fernández",
+    "especialidad": "Dermatología",
+    "activo": true
+  },
+  {
+    "profesionalid": 4,
+    "nombre": "Dr. Carlos Rodríguez",
+    "especialidad": "Traumatología",
+    "activo": false
+  },
+  {
+    "profesionalid": 5,
+    "nombre": "Dra. Valeria Rossi",
+    "especialidad": "Ginecología",
+    "activo": true
+  },
+  {
+    "profesionalid": 6,
+    "nombre": "Dr. Mateo Benítez",
+    "especialidad": "Neurología",
+    "activo": true
+  },
+  {
+    "profesionalid": 7,
+    "nombre": "Dra. Camila Torres",
+    "especialidad": "Oftalmología",
+    "activo": false
+  },
+  {
+    "profesionalid": 8,
+    "nombre": "Dr. Javier López",
+    "especialidad": "Psiquiatría",
+    "activo": true
+  },
+  {
+    "profesionalid": 9,
+    "nombre": "Dra. Mariana Silva",
+    "especialidad": "Endocrinología",
+    "activo": true
+  },
+  {
+    "profesionalid": 10,
+    "nombre": "Dr. Gonzalo Romero",
+    "especialidad": "Gastroenterología",
+    "activo": true
+  },
+  {
+    "profesionalid": 11,
+    "nombre": "Dra. Natalia Díaz",
+    "especialidad": "Otorrinolaringología",
+    "activo": true
+  },
+  {
+    "profesionalid": 12,
+    "nombre": "Dr. Lucas Peralta",
+    "especialidad": "Urología",
+    "activo": false
+  },
+  {
+    "profesionalid": 13,
+    "nombre": "Dra. Florencia Castro",
+    "especialidad": "Neumonología",
+    "activo": true
+  },
+  {
+    "profesionalid": 14,
+    "nombre": "Dr. Diego Morales",
+    "especialidad": "Cardiología",
+    "activo": true
+  },
+  {
+    "profesionalid": 15,
+    "nombre": "Dra. Paula Ruiz",
+    "especialidad": "Pediatría",
+    "activo": true
+  },
+  {
+    "profesionalid": 16,
+    "nombre": "Dr. Nicolás Navarro",
+    "especialidad": "Dermatología",
+    "activo": false
+  },
+  {
+    "profesionalid": 17,
+    "nombre": "Dra. Agustina Medina",
+    "especialidad": "Nutrición",
+    "activo": true
+  },
+  {
+    "profesionalid": 18,
+    "nombre": "Dr. Esteban Vargas",
+    "especialidad": "Traumatología",
+    "activo": true
+  },
+  {
+    "profesionalid": 19,
+    "nombre": "Dra. Carolina Méndez",
+    "especialidad": "Ginecología",
+    "activo": true
+  },
+  {
+    "profesionalid": 20,
+    "nombre": "Dr. Gabriel Soria",
+    "especialidad": "Oftalmología",
+    "activo": true
+  },
+  {
+    "profesionalid": 21,
+    "nombre": "Dra. Micaela Acosta",
+    "especialidad": "Psiquiatría",
+    "activo": false
+  },
+  {
+    "profesionalid": 22,
+    "nombre": "Dr. Rodrigo Herrera",
+    "especialidad": "Neurología",
+    "activo": true
+  },
+  {
+    "profesionalid": 23,
+    "nombre": "Dra. Romina Flores",
+    "especialidad": "Endocrinología",
+    "activo": true
+  },
+  {
+    "profesionalid": 24,
+    "nombre": "Dr. Tomás Cabrera",
+    "especialidad": "Gastroenterología",
+    "activo": true
+  },
+  {
+    "profesionalid": 25,
+    "nombre": "Dra. Daniela Ramos",
+    "especialidad": "Medicina General",
+    "activo": true
+  },
+  {
+    "profesionalid": 26,
+    "nombre": "Dr. Fernando Ríos",
+    "especialidad": "Urología",
+    "activo": true
+  },
+  {
+    "profesionalid": 27,
+    "nombre": "Dra. Sabrina Vega",
+    "especialidad": "Nutrición",
+    "activo": false
+  },
+  {
+    "profesionalid": 28,
+    "nombre": "Dr. Ignacio Molina",
+    "especialidad": "Neumonología",
+    "activo": true
+  },
+  {
+    "profesionalid": 29,
+    "nombre": "Dra. Andrea Juárez",
+    "especialidad": "Medicina General",
+    "activo": true
+  },
+  {
+    "profesionalid": 30,
+    "nombre": "Dr. Manuel Delgado",
+    "especialidad": "Otorrinolaringología",
+    "activo": true
+  }
+]

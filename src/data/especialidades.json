@@ -1,0 +1,42 @@
+[
+  {
+    "especialidadid": 1,
+    "nombreEspecialidad": "Cardiología",
+    "activa": true
+  },
+  {
+    "especialidadid": 2,
+    "nombreEspecialidad": "Dermatología",
+    "activa": true
+  },
+  {
+    "especialidadid": 3,
+    "nombreEspecialidad": "Pediatría",
+    "activa": true
+  },
+  {
+    "especialidadid": 4,
+    "nombreEspecialidad": "Neurología",
+    "activa": false
+  },
+  {
+    "especialidadid": 5,
+    "nombreEspecialidad": "Traumatología",
+    "activa": true
+  },
+  {
+    "especialidadid": 6,
+    "nombreEspecialidad": "Ginecología",
+    "activa": true
+  },
+  {
+    "especialidadid": 7,
+    "nombreEspecialidad": "Oftalmología",
+    "activa": false
+  },
+  {
+    "especialidadid": 8,
+    "nombreEspecialidad": "Psiquiatría",
+    "activa": true
+  }
+]
