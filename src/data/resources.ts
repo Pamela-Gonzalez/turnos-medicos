@@ -20,3 +20,22 @@ export const configuracionAgenda: Parametria = {
     horaMinima: "07:00",
     horaMaxima: "13:00"
 }
+export type Especialidad = {
+    especialidadId: number,
+    nombreEspecialidad: string, 
+    activa: boolean
+}
+export type Profesional = {
+    prodesionalId: number,
+    nombre: string, 
+    especialidad: string, 
+    activa: boolean
+}
+
+
+
+
+
+
+
+
