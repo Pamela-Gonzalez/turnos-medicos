@@ -64,7 +64,6 @@ app.get('/especialidades/:id', (req: Request, res: Response) => {
   }
 });
 
-
 // POST /especialidades - Crear una nueva especialidad
 app.post('/especialidades', (req: Request, res: Response) => {
   try {
@@ -89,23 +88,36 @@ app.post('/especialidades', (req: Request, res: Response) => {
   }
 });
 
-
 // DELETE /especialidades/:id - Borrado lógico (activa: false)
 app.delete('/especialidades/:id', (req: Request, res: Response) => {
   try {
-    const especialidadId: number = Number(req.params.id as string)
+    
+    const idParam = Number(req.params.id)
 
-    const indice: number = arrayEspecialidades.findIndex((esp:any)=> esp.especialidadId === especialidadId)
+    const indice: number = arrayEspecialidades.findIndex((esp:any)=> Number(esp.especialidadId) === idParam)
 
     if (indice > -1) {
-        arrayEspecialidades(indice).activa = false
+        arrayEspecialidades[indice].activa = false
 
-        res.status(200)
-           .json({})
+        console.table(arrayEspecialidades)
+
+        return res.status(200)
+           .json({
+            status: true,
+            message: "La especialidad se ha desactivado correctamente",
+            especialidad: arrayEspecialidades[indice]
+           })
     }
 
+    // Respuesta obligatoria si no existe la especialidad 
+    return res.status(404).json({
+      status: false,
+      errorMessage: 'Especialidad no encontrada'
+    });
+
+
   } catch (error) {
-    res.status(400)
+    return res.status(400)
        .json({ status: false, errorMessage: 'Error al desactivar la especialidad' });
   }
 });
@@ -176,64 +188,79 @@ app.post('/profesionales', (req: Request, res: Response) => {
 
 
 // PUT /profesionales/:id - Modificación completa de datos de un profesional
-app.put('/profesionales/:id', (req: Request, res: Response) => {
+app.put('/profesionales/:profesionalid', (req: Request, res: Response) => {
   try {
-       const profesionalId = req.params.profesionalId
+       const Id = Number(req.params.profesionalid)
+       console.log("ID recibido:", Id)
+       console.table(arrayProfesionales)
+
        const { nombre, especialidad, activo } = req.body
 
-       const indice = arrayProfesionales.findIndex((prof: any)=> prof.profesionalId === Number(profesionalId))
+       const indice = arrayProfesionales.findIndex((prof: any) => Number(prof.profesionalid ?? prof.id) === Id)
+       
+       console.log("Índice encontrado:", indice)
+
        if (indice > -1) {
          
-        arrayProfesionales(indice).nombre = nombre 
-        arrayProfesionales(indice).especialidad = especialidad
-        arrayProfesionales(indice).activo = Boolean(activo)
+        arrayProfesionales[indice].nombre = nombre 
+        arrayProfesionales[indice].especialidad = especialidad
+        arrayProfesionales[indice].activo = Boolean(activo)
 
-        res.status(200)
-           .json(arrayProfesionales(indice))
+        console.table(arrayProfesionales)
 
-       } else {
-            throw new Error("No se encontro el profesional indicado")
-       }
+        return res.status(200)
+           .json({
+            status: true,
+            message: "Profesional actualizado correctamente",
+            profesional: arrayProfesionales[indice]
+           })
 
-
+       } else  {
+        console.log(Error) // <-- Esto te dirá exactamente qué falla
+        return res.status(404).json({
+        status: false,
+        errorMessage: 'Profesional no encontrado'
+  })
+}
   } catch (error) {
-    res.status(400)
-       .json({ status: false, errorMessage: 'Error al actualizar el profesional' });
+    console.log(error) // <-- Esto te dirá exactamente qué falla
+    return res.status(400)
+       .json({ status: false, errorMessage: 'Error al actualizar el profesional' })
   }
 });
+
 
 // DELETE /profesionales/:id - Borrado lógico (activo: false)
 app.delete('/profesionales/:id', (req: Request, res: Response) => {
   try {
-    const profesionalId = req.params.profesionalId
-    const indice = arrayProfesionales.findIndex((prof: any)=> prof.profesionalId === Number(profesionalId))
+    const Id = Number(req.params.id)
+    const indice = arrayProfesionales.findIndex((prof: any)=> Number(prof.profesionalid) === Id)
 
     if (indice > -1) {
-        arrayProfesionales(indice).activo = false
-        res.status(204)
-           .json({})
+        // Borrado lógico: cambiamos la propiedad activo a false
+        arrayProfesionales[indice].activo = false
+
+        console.table(arrayProfesionales)
+
+        return res.status(200)
+           .json({
+            status: true,
+            message: 'Profesional desactivado correctamente',
+            profesional: arrayProfesionales[indice]
+        })
     } else {
-        throw new Error("Error al intentar cambiar el estado activo de un profesional.")
+        return res.status(404).json({
+        status: false,
+        errorMessage: 'Endpoint no encontrado'
+       })
     }
-
   } catch (error) {
-    res.status(400)
-       .json({status: false, errorMessage: 'Error al intentar realizar la operación' });
+    console.error(error)
+    return res.status(500).json({
+      status: false,
+      errorMessage: 'Error interno del servidor'
+    })
   }
-});
-
-
-app.delete('/profesionales/:id', (req: Request, res: Response) => {
 })
 
-app.use((req: Request, res: Response) => {
-    try {
-        res.status(404).json({
-            error: 'Endpoint no encontrado',
-            ruta: req.originalUrl,
-            metodo: req.method
-           });
-    }catch (error) {
-        res.status(500).json({error: 'Error internodel servidor' });
-    }
-});
+
