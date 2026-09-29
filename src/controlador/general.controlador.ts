@@ -2,7 +2,7 @@
 import { type Response, type Request } from "express"
 
 
-export class GeneralControler {
+export class GeneralControlador {
     
     static helloworld = async (req: Request, res: Response) => {
       return res.status(200);

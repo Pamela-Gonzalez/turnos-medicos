@@ -1,44 +1,39 @@
-import { configuracionAgenda } from "./data/resources.js";
-import { EspecialidadesControlador } from "./controlador/especialidades.controlador.js";
-import { ProfesionalesControlador } from "./controlador/profesionales.controlador.js";
-import { GeneralControler } from "./controlador/general.controlador.js";
+import express from "express";
+import { EspecialidadesControlador } from "./controlador/especialidades.controlador";
+import { ProfesionalesControlador } from "./controlador/profesionales.controlador";
+import { GeneralControlador } from "./controlador/general.controlador";
 
-//import type { Especialidad, Profesional } from "./data/resources.js";
-
-
-import express, {type Response, type Request} from "express";
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-
-//MIDDLEWARE
+// MIDDLEWARE
 app.use(express.json());
 
+// ENDPOINTS
+
+// Hello World
+app.get("/", GeneralControlador.helloworld);
+
+// Especialidades
+app.get("/especialidades", EspecialidadesControlador.getAll);
+app.get("/especialidades/:id", EspecialidadesControlador.findById);
+app.post("/especialidades", EspecialidadesControlador.create);
+app.delete("/especialidades/:id", EspecialidadesControlador.delete);
+
+// Profesionales
+app.get("/profesionales", ProfesionalesControlador.getAll);
+app.get("/profesionales/:id", ProfesionalesControlador.findById);
+app.post("/profesionales", ProfesionalesControlador.create);
+app.put("/profesionales/:id", ProfesionalesControlador.modify);
+app.delete("/profesionales/:id", ProfesionalesControlador.delete);
+
+// Middleware 404 - Ruta no encontrada
+app.use(GeneralControlador.notFound);
+
+// INICIAR SERVIDOR
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
-//ENDPOINTS
-//Hello World
-app.get("/", GeneralControler.helloworld)
-
-// Especialidades
-app.get("/especialidades", EspecialidadesController.getAll)
-app.get("/especialidades/:id", EspecialidadesController.findById)
-app.post("/especialidades", EspecialidadesController.create)
-app.delete("/especialidades/:id", EspecialidadesController.delete)
-
-// Profesionales
-app.get("/profesionales", ProfesionalesController.getAll)
-app.get("/profesionales/:id", ProfesionalesController.findById)
-app.post("/profesionales", ProfesionalesController.create)
-app.put("/profesionales/:id", ProfesionalesController.modify)
-app.delete("/profesionales/:id", ProfesionalesController.delete)
-
-//404 Not Found
-app.use(GeneralController.notFound)
-  
-  
 
 
 // ==========================================
@@ -66,28 +61,28 @@ app.get('/especialidades', async (req: Request, res: Response) => {
 // GET /especialidades/:id - Buscar una especialidad por especialidadId
 app.get('/especialidades/:id', async (req: Request, res: Response) => {
   try {
-    const especialidadId: number | undefined = Number(req.params.id) 
+    const especialidadId: number = Number(req.params.id);
 
-    if (!especialidadId) {
-        throw new Error ('Verifica el código o ID de la especialidad que buscas') 
+    if (!especialidadId || isNaN(especialidadId)) {
+      throw new Error('Verifica el código o ID de la especialidad que buscas');
     }
 
-    const especialidadSolicitada = arrayEspecialidades.find((esp: any)=> esp.especialidadId === especialidadId)
+    const especialidadSolicitada = arrayEspecialidades.find(
+      (esp: any) => esp.especialidadId === especialidadId
+    );
 
     if (!especialidadSolicitada) {
-        throw new Error ('No se encontro una especialidad con el código o ID indicado.')
+      throw new Error('No se encontró una especialidad con el código o ID indicado.');
     }
 
-        //} else {
-        //console.clear()
-        //console.table(especialidadSolicitada)
-        return res.status(200)
-        .json(especialidadSolicitada)
-    }
+    return res.status(200)
+              .json(especialidadSolicitada);
 
-  } catch (error) {
-    return res.status(400)
-       .json({ status: false, errorMessage: 'Error al buscar la especialidad' });
+  } catch (error: any) {
+    return res.status(400).json({
+      status: false,
+      errorMessage: error.message || 'Error al buscar la especialidad'
+    });
   }
 });
 
